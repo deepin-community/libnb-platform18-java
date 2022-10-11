@@ -1,0 +1,27 @@
+From: Markus Koschany <apo@debian.org>
+Date: Sat, 3 Oct 2020 02:55:32 +0200
+Subject: platform-libs.javafx
+
+Prebuilt files are not allowed.
+---
+ platform/libs.javafx/build.xml | 7 -------
+ 1 file changed, 7 deletions(-)
+
+diff --git a/platform/libs.javafx/build.xml b/platform/libs.javafx/build.xml
+index 219de43..88f8803 100644
+--- a/platform/libs.javafx/build.xml
++++ b/platform/libs.javafx/build.xml
+@@ -28,13 +28,6 @@
+          </condition>
+     </target>
+     <target name="-build-openjfx" depends="-check-openjfx" unless="openjfx.zip.exists">
+-        <unzip src="external/lib-javafx-13.03-beta.nbm" dest="${build.dir}">
+-            <mapper type="flatten"/>
+-            <patternset>
+-                <include name="**/javafx-2.2.4.jar"/>
+-            </patternset>
+-        </unzip>
+-        <move file="${build.dir}/javafx-2.2.4.jar" tofile="${build.dir}/openjfx.zip"/>
+     </target>
+     <target name="build-init" depends="projectized.build-init,-build-openjfx">
+     </target>

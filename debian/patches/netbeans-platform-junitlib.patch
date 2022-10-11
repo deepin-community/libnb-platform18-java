@@ -1,0 +1,28 @@
+From: Markus Koschany <apo@debian.org>
+Date: Sat, 3 Oct 2020 00:19:11 +0200
+Subject: netbeans-platform-junitlib
+
+Fix FTBFS due to removed files.
+---
+ platform/junitlib/nbproject/project.properties | 8 --------
+ 1 file changed, 8 deletions(-)
+
+diff --git a/platform/junitlib/nbproject/project.properties b/platform/junitlib/nbproject/project.properties
+index 20edacc..5ec1d03 100644
+--- a/platform/junitlib/nbproject/project.properties
++++ b/platform/junitlib/nbproject/project.properties
+@@ -17,14 +17,6 @@
+ is.autoload=true
+ javac.source=1.8
+ javac.compilerargs=-Xlint -Xlint:-serial
+-release.external/junit-4.12-sources.jar=docs/junit-4.12-sources.jar
+-release.external/junit-4.12-javadoc.jar=docs/junit-4.12-javadoc.jar
+-release.external/junit-jupiter-api-5.6.0-sources.jar=docs/junit-jupiter-api-5.6.0-sources.jar
+-release.external/junit-jupiter-api-5.6.0-javadoc.jar=docs/junit-jupiter-api-5.6.0-javadoc.jar
+-release.external/junit-jupiter-params-5.6.0-sources.jar=docs/junit-jupiter-params-5.6.0-sources.jar
+-release.external/junit-jupiter-params-5.6.0-javadoc.jar=docs/junit-jupiter-params-5.6.0-javadoc.jar
+-release.external/junit-jupiter-engine-5.6.0-sources.jar=docs/junit-jupiter-engine-5.6.0-sources.jar
+-release.external/junit-jupiter-engine-5.6.0-javadoc.jar=docs/junit-jupiter-engine-5.6.0-javadoc.jar
+ nbm.target.cluster=java
+ nbm.is.global=false
+ jnlp.indirect.jars=\

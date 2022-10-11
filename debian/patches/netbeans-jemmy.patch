@@ -1,0 +1,21 @@
+From: Markus Koschany <apo@debian.org>
+Date: Fri, 2 Oct 2020 23:59:07 +0200
+Subject: netbeans-jemmy
+
+Fix FTBFS because of removed zip files.
+---
+ harness/jemmy/nbproject/project.properties | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/harness/jemmy/nbproject/project.properties b/harness/jemmy/nbproject/project.properties
+index 1a09c97..43856f3 100644
+--- a/harness/jemmy/nbproject/project.properties
++++ b/harness/jemmy/nbproject/project.properties
+@@ -18,7 +18,5 @@ is.autoload=true
+ javac.compilerargs=-Xlint -Xlint:-serial
+ javac.source=1.6
+ release.external/jemmy-2.3.1.1.jar=modules/ext/jemmy-2.3.1.1.jar
+-release.external/jemmy-2.3.1.1-doc.zip=docs/jemmy-2.3.1.1-doc.zip
+-release.external/jemmy-2.3.1.1-src.zip=docs/jemmy-2.3.1.1-src.zip
+ sigtest.gen.fail.on.error=false
+ 

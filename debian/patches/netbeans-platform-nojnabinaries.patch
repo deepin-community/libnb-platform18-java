@@ -1,0 +1,55 @@
+From: Markus Koschany <apo@debian.org>
+Date: Sat, 3 Oct 2020 00:22:20 +0200
+Subject: netbeans-platform-nojnabinaries
+
+Use Debian's system libraries.
+---
+ platform/libs.jna.platform/nbproject/project.properties    |  1 -
+ platform/libs.jna/nbproject/project.properties             | 12 ------------
+ platform/libs.jna/src/org/netbeans/libs/jna/Installer.java |  2 +-
+ 3 files changed, 1 insertion(+), 14 deletions(-)
+
+diff --git a/platform/libs.jna.platform/nbproject/project.properties b/platform/libs.jna.platform/nbproject/project.properties
+index 0872759..dbdaf66 100644
+--- a/platform/libs.jna.platform/nbproject/project.properties
++++ b/platform/libs.jna.platform/nbproject/project.properties
+@@ -17,5 +17,4 @@
+ 
+ is.autoload=true
+ javac.source=1.6
+-release.external/jna-platform-5.4.0.jar=modules/ext/jna-platform-5.4.0.jar
+ sigtest.gen.fail.on.error=false
+diff --git a/platform/libs.jna/nbproject/project.properties b/platform/libs.jna/nbproject/project.properties
+index 8dfc5fa..31b78a2 100644
+--- a/platform/libs.jna/nbproject/project.properties
++++ b/platform/libs.jna/nbproject/project.properties
+@@ -16,17 +16,5 @@
+ # under the License.
+ 
+ javac.source=1.6
+-release.external/jna-5.4.0.jar=modules/ext/jna-5.4.0.jar
+ # Do not forget to rename native libs being extracted from the JAR when upgrading the JNA library, and patch org.netbeans.libs.jna.Installer as well.
+-release.external/jna-5.4.0.jar!/com/sun/jna/darwin/libjnidispatch.jnilib=modules/lib/libjnidispatch-nb.jnilib
+-release.external/jna-5.4.0.jar!/com/sun/jna/linux-x86-64/libjnidispatch.so=modules/lib/amd64/linux/libjnidispatch-nb.so
+-release.external/jna-5.4.0.jar!/com/sun/jna/linux-x86/libjnidispatch.so=modules/lib/i386/linux/libjnidispatch-nb.so
+-release.external/jna-5.4.0.jar!/com/sun/jna/win32-x86-64/jnidispatch.dll=modules/lib/amd64/jnidispatch-nb.dll
+-release.external/jna-5.4.0.jar!/com/sun/jna/win32-x86/jnidispatch.dll=modules/lib/x86/jnidispatch-nb.dll
+-jnlp.verify.excludes=\
+-    modules/lib/amd64/jnidispatch-nb.dll,\
+-    modules/lib/amd64/linux/libjnidispatch-nb.so,\
+-    modules/lib/i386/linux/libjnidispatch-nb.so,\
+-    modules/lib/x86/jnidispatch-nb.dll,\
+-    modules/lib/libjnidispatch-nb.jnilib
+ sigtest.gen.fail.on.error=false
+diff --git a/platform/libs.jna/src/org/netbeans/libs/jna/Installer.java b/platform/libs.jna/src/org/netbeans/libs/jna/Installer.java
+index 95b7f3f..fa29520 100644
+--- a/platform/libs.jna/src/org/netbeans/libs/jna/Installer.java
++++ b/platform/libs.jna/src/org/netbeans/libs/jna/Installer.java
+@@ -26,6 +26,6 @@ public class Installer extends ModuleInstall {
+     public void validate() {
+         super.validate();
+         //#211655
+-        System.setProperty( "jna.boot.library.name", "jnidispatch-nb" ); //NOI18N
++        System.setProperty( "jna.boot.library.name", "jnidispatch" ); //NOI18N
+     }
+ }

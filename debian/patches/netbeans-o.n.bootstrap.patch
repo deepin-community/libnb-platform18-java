@@ -1,0 +1,24 @@
+From: Markus Koschany <apo@debian.org>
+Date: Sat, 3 Oct 2020 02:54:28 +0200
+Subject: netbeans-o.n.bootstrap
+
+Windows starters are no longer supported.
+---
+ platform/o.n.bootstrap/nbproject/project.properties | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/platform/o.n.bootstrap/nbproject/project.properties b/platform/o.n.bootstrap/nbproject/project.properties
+index e10ee5b..ac64912 100644
+--- a/platform/o.n.bootstrap/nbproject/project.properties
++++ b/platform/o.n.bootstrap/nbproject/project.properties
+@@ -20,10 +20,6 @@ javac.source=1.8
+ module.jar.dir=lib
+ module.jar.basename=boot.jar
+ release.launcher/unix/nbexec=lib/nbexec
+-release.external/platform-launchers-10.0.zip!/nbexec.exe=lib/nbexec.exe
+-release.external/platform-launchers-10.0.zip!/nbexec64.exe=lib/nbexec64.exe
+-release.external/platform-launchers-10.0.zip!/nbexec.dll=lib/nbexec.dll
+-release.external/platform-launchers-10.0.zip!/nbexec64.dll=lib/nbexec64.dll
+ nbm.executable.files=lib/nbexec
+ 
+ javadoc.arch=${basedir}/arch.xml

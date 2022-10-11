@@ -1,0 +1,21 @@
+From: Markus Koschany <apo@debian.org>
+Date: Sat, 3 Oct 2020 02:55:05 +0200
+Subject: platform-disable-applemenu
+
+Disable MacOS specific applemenu.
+---
+ nbbuild/cluster.properties | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/nbbuild/cluster.properties b/nbbuild/cluster.properties
+index f856ea6..d106368 100644
+--- a/nbbuild/cluster.properties
++++ b/nbbuild/cluster.properties
+@@ -199,7 +199,6 @@ nb.cluster.platform=\
+         api.search,\
+         api.templates,\
+         api.visual,\
+-        applemenu,\
+         autoupdate.cli,\
+         autoupdate.services,\
+         autoupdate.ui,\

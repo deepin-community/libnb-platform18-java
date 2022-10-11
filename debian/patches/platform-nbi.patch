@@ -1,0 +1,22 @@
+From: Markus Koschany <apo@debian.org>
+Date: Sat, 3 Oct 2020 03:06:26 +0200
+Subject: platform-nbi
+
+Disable libs.nbi.
+---
+ nbbuild/cluster.properties | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/nbbuild/cluster.properties b/nbbuild/cluster.properties
+index 0870880..58cb42c 100644
+--- a/nbbuild/cluster.properties
++++ b/nbbuild/cluster.properties
+@@ -816,8 +816,6 @@ nb.cluster.harness=\
+         apisupport.harness,\
+         jellytools.platform,\
+         jemmy,\
+-        libs.nbi.ant,\
+-        libs.nbi.engine,\
+         nbjunit,\
+         o.n.insane
+ 

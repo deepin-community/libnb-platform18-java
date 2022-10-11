@@ -1,0 +1,24 @@
+From: Markus Koschany <apo@debian.org>
+Date: Sat, 3 Oct 2020 03:06:08 +0200
+Subject: platform-harness-launchers
+
+Disable Windows-specific harness launchers.
+---
+ harness/apisupport.harness/nbproject/project.properties | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/harness/apisupport.harness/nbproject/project.properties b/harness/apisupport.harness/nbproject/project.properties
+index 7db6d57..4829398 100644
+--- a/harness/apisupport.harness/nbproject/project.properties
++++ b/harness/apisupport.harness/nbproject/project.properties
+@@ -30,10 +30,6 @@ release.../../nbbuild/jdk.xml=jdk.xml
+ # release.external/jsearch-2.0_05.jar=antlib/jsearch-2.0_05.jar
+ release.external/bindex-2.2.jar=antlib/bindex-2.2.jar
+ #release.external/jnlp-servlet.jar=jnlp/jnlp-servlet.jar
+-release.external/harness-launchers-10.0.zip!/app.exe=launchers/app.exe
+-release.external/harness-launchers-10.0.zip!/app64.exe=launchers/app64.exe
+-release.external/harness-launchers-8.2.zip!/pre7_app.exe=launchers/pre7_app.exe
+-release.external/harness-launchers-8.2.zip!/pre7_app_w.exe=launchers/pre7_app_w.exe
+ nbm.executable.files=launchers/app.sh
+ extra.module.files=\
+     jnlp/jnlp-launcher.jar,\

@@ -1,0 +1,37 @@
+From: Markus Koschany <apo@debian.org>
+Date: Sat, 3 Oct 2020 00:25:25 +0200
+Subject: netbeans-platform-o.n.html.ko4j.patch
+
+html.ko4j is currently not supported.
+---
+ nbbuild/cluster.properties | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/nbbuild/cluster.properties b/nbbuild/cluster.properties
+index 345a52a..b7ce064 100644
+--- a/nbbuild/cluster.properties
++++ b/nbbuild/cluster.properties
+@@ -254,7 +254,6 @@ nb.cluster.platform=\
+         o.apache.commons.io,\
+         o.apache.commons.logging,\
+         o.n.core,\
+-        o.n.html.ko4j,\
+         o.n.html.xhr4j,\
+         o.n.swing.laf.dark,\
+         o.n.swing.laf.flatlaf,\
+@@ -289,7 +288,6 @@ nb.cluster.platform=\
+         spi.actions,\
+         spi.quicksearch,\
+         templates,\
+-        templatesui,\
+         uihandler
+ validation.nb.cluster.platform=\
+         o.n.core,\
+@@ -677,7 +675,6 @@ nb.cluster.java=\
+         junit.ant,\
+         junit.ant.ui,\
+         junit.ui,\
+-        ko4j.debugging,\
+         kotlin.editor,\
+         lib.jshell.agent,\
+         lib.nbjavac,\

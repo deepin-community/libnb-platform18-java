@@ -1,0 +1,281 @@
+libnb-platform18-java (12.1-2) unstable; urgency=medium
+
+  * Upload to unstable.
+
+ -- Markus Koschany <apo@debian.org>  Mon, 05 Oct 2020 18:24:20 +0200
+
+libnb-platform18-java (12.1-1) experimental; urgency=medium
+
+  * New upstream version 12.1.
+    - Fix FTBFS due to incompatible types. (Closes: #963281)
+  * Fix debian/watch and point to github.com.
+  * Switch to debhelper-compat = 13.
+  * Remove Andrew Ross from Uploaders because he is not active anymore.
+  * Declare compliance with Debian Policy 4.5.0.
+  * Refresh all patches and add new ones to prevent build failures.
+  * Build-depend on libcommons-codec-java, libcommons-io-java,
+    libcommons-logging-java and libjson-simple-java.
+
+ -- Markus Koschany <apo@debian.org>  Sat, 03 Oct 2020 03:08:41 +0200
+
+libnb-platform18-java (10.0-2) unstable; urgency=medium
+
+  * Update platform-osgi-update.patch and return an
+    UnsupportedOperationException instead of a NULL pointer.
+  * Add AutoUpdate-NEVER.patch and set the defaultCheckInterval to NEVER to
+    prevent automatic updates. This can be changed by users individually.
+    (Closes: #842284)
+  * Remove antlr-runtime symlink because it is not platform specific.
+
+ -- Markus Koschany <apo@debian.org>  Fri, 25 Jan 2019 12:21:05 +0100
+
+libnb-platform18-java (10.0-1) unstable; urgency=medium
+
+  * New upstream version 10.0.
+    - Fix FTBFS. (Closes: #876499)
+  * Drop libnb-platform18-java-doc package.
+
+ -- Markus Koschany <apo@debian.org>  Wed, 23 Jan 2019 14:39:07 +0100
+
+libnb-platform18-java (8.1+dfsg1-8) unstable; urgency=medium
+
+  * Add ant-10.patch to fix the FTBFS with Ant 1.10.
+  * Add java9.patch and openide.util.enumerations.patch to fix the FTBFS with
+    Java 9. (Closes: #893270)
+  * Declare compliance with Debian Policy 4.1.4.
+
+ -- Markus Koschany <apo@debian.org>  Tue, 24 Apr 2018 20:00:46 +0200
+
+libnb-platform18-java (8.1+dfsg1-7) unstable; urgency=medium
+
+  * Sync osgi-update.patch with latest version of libequinox-osgi-java.
+  * Use compat level 11.
+  * Declare compliance with Debian Policy 4.1.3.
+  * Tighten B-D on libequinox-osgi-java.
+
+ -- Markus Koschany <apo@debian.org>  Wed, 21 Feb 2018 17:45:32 +0100
+
+libnb-platform18-java (8.1+dfsg1-6) unstable; urgency=medium
+
+  * Add jna-4.4.0-compatibility.patch and fix FTBFS with JNA 4.4.0.
+    Thanks to Lucas Nussbaum for the report. (Closes: #868923)
+  * Switch to compat level 10.
+  * Use https for Format field.
+  * Declare compliance with Debian Policy 4.0.0.
+  * Tighten B-D on libjna-platform-java to >= 4.4.0.
+
+ -- Markus Koschany <apo@debian.org>  Sun, 23 Jul 2017 17:22:32 +0200
+
+libnb-platform18-java (8.1+dfsg1-5) unstable; urgency=medium
+
+  * Use the correct name for libjna-jni library. (Closes: #858876)
+
+ -- Markus Koschany <apo@debian.org>  Wed, 19 Apr 2017 21:50:21 +0200
+
+libnb-platform18-java (8.1+dfsg1-4) unstable; urgency=medium
+
+  * Add gcc-6-ftbfs.patch and fix FTBFS with GCC-6. (Closes: #835691)
+    Thanks to Lucas Nussbaum for the report.
+
+ -- Markus Koschany <apo@debian.org>  Sun, 28 Aug 2016 17:59:56 +0200
+
+libnb-platform18-java (8.1+dfsg1-3) unstable; urgency=medium
+
+  * Declare compliance with Debian Policy 3.9.8.
+  * Vcs-Git: Use https.
+  * Set permit.jdk8.builds=true.
+  * Fix include path to find jni_md.h.
+    Thanks to Lucas Nussbaum for the report. (Closes: #830455)
+
+ -- Markus Koschany <apo@debian.org>  Fri, 15 Jul 2016 02:06:50 +0200
+
+libnb-platform18-java (8.1+dfsg1-2) unstable; urgency=medium
+
+  * netbeans-platform-o.n.html.ko4j.patch: Readd apisupport.project module.
+
+ -- Markus Koschany <apo@debian.org>  Thu, 31 Dec 2015 11:46:37 +0100
+
+libnb-platform18-java (8.1+dfsg1-1) unstable; urgency=medium
+
+  * Imported Upstream version 8.1+dfsg1.
+  * orig-tar.sh: Use xz compression.
+  * debian/rules: Remove conditional whether patches are applied or not.
+  * Drop debian/patches/netbeans-platform-junit4.patch. Fixed upstream.
+  * Refresh debian/patches/netbeans-platform-empty-binaries-list.patch
+  * Refresh debian/patches/netbeans-platform-windowslauncher.patch
+  * Add asm4-all.jar to linked-jars and build-depend on libasm4-java.
+  * Add libhamcrest-java to Build-Depends and update linked-jars accordingly.
+  * Add netbeans-platform-disable-net.java-modules.patch and disable the
+    net.java.html module.
+  * Add netbeans-platform-junitlib.patch to prevent a FTBFS.
+  * Add netbeans-platform-o.n.html.ko4j.patch and disable o.n.html.ko4j module.
+  * Update version of openide-* pom files.
+  * Update my e-mail address.
+  * libnb-platform18-java: Depend on libasm4-java and libhamcrest-java.
+  * Install org-openide-util-ui.jar into libnb-org-openide-util-java.
+    Apparently the old org-openide-util.jar was split into two jar files.
+  * libnb-platform-devel-java: Tighten dependency on libnb-platform18-java.
+  * debian/rules: Build with --parallel.
+
+ -- Markus Koschany <apo@debian.org>  Wed, 30 Dec 2015 11:48:31 +0100
+
+libnb-platform18-java (8.0.2+dfsg1-2) unstable; urgency=medium
+
+  * Tighten dependency on felix-framework, osgi-core and osgi-compendium.
+    Thanks to Mark Carroll for the report. (Closes: #799936)
+  * Remove libstringtemplate-java from Build-Depends and do not symlink
+    the jar file with linked-jars.
+  * Tighten dependency on antlr3 to >= 3.4.
+  * Vcs-Browser: Use https.
+
+ -- Markus Koschany <apo@gambaru.de>  Thu, 24 Sep 2015 19:28:21 +0200
+
+libnb-platform18-java (8.0.2+dfsg1-1) unstable; urgency=medium
+
+  * Imported Upstream version 8.0.2+dfsg1.
+    - Fix FTBFS in sid by updating the package to the latest upstream release.
+      (Closes: #784442)
+  * Replace b-d w3c-dtd-xhtml with w3c-sgml-lib because the former will be
+    removed from Debian. (Closes: #787177)
+  * debian/control:
+    - Tighten build-dependency on felix-framework.
+    - Declare compliance with Debian Policy 3.9.6.
+    - Remove virtual java7-jdk build-dependency. (Closes: #754602)
+    - Switch Vcs-Browser field to cgit.
+    - Run wrap-and-sort -sa.
+    - Add myself to Uploaders.
+    - Remove obsolete Breaks, Replaces, Conflicts and Provides fields.
+  * Use compat level 9 and require debhelper >= 9.
+  * Remove duplicate files in doc package. Add rdfind and symlinks to
+    Build-Depends-Indep.
+  * Update linked-jars for new release.
+  * Change version in pom files to 8.0.2.
+  * Rebase all patches for new release.
+  * Drop netbeans-platform~classfile-version.patch. Use upstream values.
+  * Drop netbeans-platform~include-extras.patch and use only included modules.
+  * Drop netbeans-platform~suitebuild.patch because the build does not fail and
+    we don't build for older netbeans platforms either.
+  * Add osgi-update.patch for incorporating the changes of the OSGi framework
+    specification.
+  * Add netbeans-platform-junit4.patch and bundle Junit4, so that nobody has to
+    download Junit4 from the Internet.
+  * Fix privacy breach logo lintian error and privacy breach lintian warning by
+    removing the links to external image sources in javadoc files in
+    debian/rules.
+  * Update debian/copyright for new release.
+
+ -- Markus Koschany <apo@gambaru.de>  Sat, 20 Jun 2015 00:50:19 +0200
+
+libnb-platform18-java (7.4+dfsg1-2) unstable; urgency=medium
+
+  * Team upload.
+  * Added the missing dependency on libjna-platform-java (Closes: #768622)
+
+ -- Emmanuel Bourg <ebourg@apache.org>  Sat, 08 Nov 2014 21:41:15 +0100
+
+libnb-platform18-java (7.4+dfsg1-1) unstable; urgency=low
+
+  * Team upload.
+
+  [ Andrew Ross ]
+  * New upstream release of Netbeans.
+  * Switch to mingw-w64 (Closes: #680468)
+  * Separate Netbeans Platform back into its own package.
+  * Include cluster release number in source package name to allow
+    multiple Netbeans platforms to be installed at once.
+  * Build .nbm modules and install into their own package.
+  * Upstream removed bashism from o.n.bootstrap/launcher/unix/nbexec
+    (Closes: #690633)
+  * Updated debian/patches.
+
+  [ tony mancill ]
+  * Bump standards version to 3.9.5.
+
+ -- tony mancill <tmancill@debian.org>  Wed, 25 Dec 2013 10:42:18 -0800
+
+libnb-platform-java (6.9-1) unstable; urgency=low
+
+  [ Andres Mejia ]
+  * Upload to Debian. (Closes: #610927)
+  * Add Debian Java team as Maintainer, Yulia and myself as Uploaders.
+  * Define a function for creation of symlinks.
+  * Add symlinks for xhtml entries found only in /usr/share/xml/entities/xhtml
+    for Debian.
+  * Update packaging to use source format 3.0 (quilt) and dh with javahelper.
+  * Refreshed patches.
+  * Bumped to Standards-Version 3.9.1.
+
+  [ Damien Raude-Morvan ]
+  * d/copyright: Small fix for missing copyright assignment,
+    Update to DEP-5 r166 format.
+  * d/watch: Prepare for next upstream release.
+  * d/control: Drop Depends: default-jre | java2-runtime as a Java
+    library don't need to depends on runtime (Java Policy).
+
+ -- Andres Mejia <mcitadel@gmail.com>  Sat, 22 Jan 2011 16:01:28 -0500
+
+libnb-platform-java (6.9-0ubuntu2) maverick; urgency=low
+
+  * Bug fix upload:
+    - Patch netbeans-platform-6.9~suite-xml.patch is added
+      (fix for http://netbeans.org/bugzilla/show_bug.cgi?id=189196)
+
+ -- Yulia Novozhilova <Yulia.novozhilova@sun.com>  Fri, 20 Aug 2010 16:44:33 +0400
+
+libnb-platform-java (6.9-0ubuntu1) maverick; urgency=low
+
+  * New upstream release
+    - License corrected
+    - control/Standards-Version is changed to 3.9.0
+    - debian/copyright file is updated
+    - debian/patches are updated
+
+ -- Yulia Novozhilova <Yulia.Novozhilova@sun.com>  Mon, 02 Aug 2010 16:41:12 +0400
+
+libnb-platform-java (6.8-0ubuntu2) lucid; urgency=low
+
+  * debian/patches/l10n.patch added (LP: #527547)
+  * debian/rules is updated to build l10n
+  * control/Standards-Version is changed to 3.8.4
+
+ -- Yulia Novozhilova <Yulia.Novozhilova@sun.com>  Fri, 26 Mar 2010 16:20:17 +0300
+
+libnb-platform-java (6.8-0ubuntu1) lucid; urgency=low
+
+  * new upstream release (LP: 517083)
+    - debian/copyright and watch files are updated
+      to point to the correct download location
+
+ -- Yulia Novozhilova <Yulia.Novozhilova@sun.com>  Fri, 11 Dec 2009 13:44:12 +0300
+
+libnb-platform-java (6.7.1-0ubuntu1) karmic; urgency=low
+
+  * new upstream release (LP: #418875)
+   - control/Standards-Version is chaged to 3.8.3
+   - copyright file updated
+
+ -- Yulia Novozhilova <Yulia.Novozhilova@sun.com>  Tue, 16 Jun 2009 16:18:50 +0400
+
+libnb-platform-java (6.5-0ubuntu2) jaunty; urgency=low
+
+  * Added debian/patches/60-6.5.1-patches.patch with bug fixes from
+    NetBeans 6.5.1 (LP: #345562)
+
+ -- Yulia Novozhilova <Yulia.Novozhilova@sun.com>  Tue, 31 Mar 2009 18:48:21 +0400
+
+libnb-platform-java (6.5-0ubuntu1) jaunty; urgency=low
+
+  * New upstream version (LP: #316793)
+  * added dependency of libnb-platform-devel-java
+              on libnb-platform9-java (LP: #276731)
+  * removed version number from binary package:
+           libnb-platform8-devel-java -> libnb-platform-devel-java
+  * watch file and get-orig-source target are added
+
+ -- Yulia Novozhilova <Yulia.Novozhilova@sun.com>  Thu, 25 Sep 2008 22:27:16 +0400
+
+libnb-platform-java (6.1-0ubuntu1) intrepid; urgency=low
+
+  * Initial release (LP: #252658)
+
+ -- Yulia Novozhilova <Yulia.Novozhilova@sun.com>  Wed, 21 May 2008 15:52:03 +0400

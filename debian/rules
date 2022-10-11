@@ -1,0 +1,112 @@
+#!/usr/bin/make -f
+
+export JAVA_HOME=/usr/lib/jvm/default-java
+# See #830455 and #814875 for more background information
+include /usr/share/java/java_defaults.mk
+include /usr/share/dpkg/pkg-info.mk
+CPPFLAGS += ${jvm_includes}
+
+#package names
+pkg-platform                := platform18
+pkg-lib-platform            := libnb-$(pkg-platform)
+libnb-platform-java         := $(pkg-lib-platform)-java
+libnb-platform-java-doc     := $(pkg-lib-platform)-java-doc
+libnb-platform-devel-java   := libnb-platform-devel-java
+
+# Included clusters
+base-platform := $(pkg-platform)
+
+NBDIR          := /usr/share/netbeans
+export JAVADIR := /usr/share/java
+
+JH_JAR          := jhall.jar
+JSEARCH_JAR     := jsearch.jar
+NB_JH_JAR       := jhall-2.0_05.jar
+NB_JSEARCH_JAR  := jsearch-2.0_05.jar
+
+NB_INSTALL_DIR := usr/share/netbeans
+
+EXT_JAR_LINK_DIR := $(NB_INSTALL_DIR)/$(pkg-platform)/modules/ext/
+LIB_DIR := $(NB_INSTALL_DIR)/$(pkg-platform)/lib/
+
+INSTALL        := dh_install -p
+LINK           := dh_link -p
+
+NB_PLATFORM_BUILD_DIR := $(shell pwd)/nbbuild/netbeans/platform
+
+BUILDSTAMP := $(shell date --utc --date="`dpkg-parsechangelog -SDate`" "+%Y%m%d")
+
+# Defined function to be used to create symlinks
+define symlink
+	mkdir -p $(dir $(2))
+	ln -sf $(1) $(2)
+endef
+
+%:
+	dh $@ --with javahelper
+
+override_dh_auto_build:
+	# link Debian's system jars
+	$(shell awk 'NF==4 {printf("ln -sf %s %s/%s;\n",$$1,$$2,$$4)}' debian/linked-jars)
+	################################################################
+	# Build the platform. DISPLAY must be unset to avoid build failures.
+	unset DISPLAY; ant \
+	-Dbuildstamp=$(BUILDSTAMP) \
+	-Dhg.id=debian-$(DEB_VERSION_UPSTREAM) \
+	-Dpermit.jdk9.builds=true \
+	-Dbuild.compiler.deprecation=false \
+	-Dbuild.compiler.debug=false \
+	-Dext.binaries.downloaded=true \
+	-Dverify.checkout=false \
+	-f nbbuild/build.xml build-platform
+
+
+override_dh_auto_install:
+	# recreate links
+	$(shell awk 'NF==4 {printf("ln -sf %s nbbuild/netbeans/%s/%s;\n",$$1,$$3,$$4)}' debian/linked-jars)
+	# Install libraries
+	mh_installjar -plibnb-org-openide-util-java -l debian/pom/openide-util.xml \
+		nbbuild/netbeans/platform/lib/org-openide-util.jar
+	mh_installpom -plibnb-org-openide-util-java debian/pom/openide-util.xml
+	mh_installjar -plibnb-org-openide-util-java -l debian/pom/openide-util-ui.xml \
+		nbbuild/netbeans/platform/lib/org-openide-util-ui.jar
+	mh_installpom -plibnb-org-openide-util-java debian/pom/openide-util-ui.xml
+	mh_installjar -plibnb-org-openide-util-lookup-java -l debian/pom/openide-util-lookup.xml \
+		nbbuild/netbeans/platform/lib/org-openide-util-lookup.jar
+	mh_installpom -plibnb-org-openide-util-lookup-java debian/pom/openide-util-lookup.xml
+	mh_installjar -plibnb-org-openide-modules-java -l debian/pom/openide-modules.xml \
+		nbbuild/netbeans/platform/lib/org-openide-modules.jar
+	mh_installpom -plibnb-org-openide-modules-java debian/pom/openide-modules.xml
+	#
+	# Install Platform
+	echo > nbbuild/netbeans/platform/.noautoupdate
+	echo > nbbuild/netbeans/platform/.lastModified
+	$(INSTALL)$(libnb-platform-java)   nbbuild/netbeans/platform/* $(NB_INSTALL_DIR)/$(pkg-platform)
+	$(INSTALL)$(libnb-platform-java)   nbbuild/netbeans/platform/.noautoupdate $(NB_INSTALL_DIR)/$(pkg-platform)
+	$(INSTALL)$(libnb-platform-java)   nbbuild/netbeans/platform/.lastModified $(NB_INSTALL_DIR)/$(pkg-platform)
+	$(LINK)$(libnb-platform-java) $(JAVADIR)/org-openide-util.jar        $(LIB_DIR)/org-openide-util.jar
+	$(LINK)$(libnb-platform-java) $(JAVADIR)/org-openide-util-ui.jar     $(LIB_DIR)/org-openide-util-ui.jar
+	$(LINK)$(libnb-platform-java) $(JAVADIR)/org-openide-util-lookup.jar $(LIB_DIR)/org-openide-util-lookup.jar
+	$(LINK)$(libnb-platform-java) $(JAVADIR)/org-openide-modules.jar     $(LIB_DIR)/org-openide-modules.jar
+	#
+	# Install devel package
+	rm -f nbbuild/netbeans/harness/antlib/$(NB_JSEARCH_JAR)
+	echo > nbbuild/netbeans/harness/.noautoupdate
+	echo > nbbuild/netbeans/harness/.lastModified
+	$(INSTALL)$(libnb-platform-devel-java)   nbbuild/netbeans/harness/* $(NB_INSTALL_DIR)/harness
+	$(INSTALL)$(libnb-platform-devel-java)   nbbuild/netbeans/harness/.noautoupdate $(NB_INSTALL_DIR)/harness
+	$(INSTALL)$(libnb-platform-devel-java)   nbbuild/netbeans/harness/.lastModified $(NB_INSTALL_DIR)/harness
+	#
+	#Fixing permissions
+	chmod 0755 debian/$(libnb-platform-devel-java)/$(NB_INSTALL_DIR)/harness/launchers/app.sh
+
+override_dh_auto_clean:
+	# remove all the symlinks to jar files we created
+	find . -name "*.jar" -type l -delete
+	# remove all jar files
+	find . -name "*.jar" -delete
+
+override_jh_depends:
+	# Skipping jh_depends run - since we use symlinks to /usr/share/java then
+	# jh_depends gets it wrong.
+

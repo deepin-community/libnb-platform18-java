@@ -1,0 +1,18 @@
+From: Markus Koschany <apo@debian.org>
+Date: Sat, 3 Oct 2020 18:18:18 +0200
+Subject: platform libs.flatlaf
+
+Disable flatlaf module.
+---
+ platform/libs.flatlaf/nbproject/project.properties | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/platform/libs.flatlaf/nbproject/project.properties b/platform/libs.flatlaf/nbproject/project.properties
+index 151b673..8ba8ef1 100644
+--- a/platform/libs.flatlaf/nbproject/project.properties
++++ b/platform/libs.flatlaf/nbproject/project.properties
+@@ -20,4 +20,3 @@ javac.compilerargs=-Xlint:unchecked
+ javac.source=1.8
+ nbm.target.cluster=platform
+ 
+-release.external/flatlaf-0.31.jar=modules/ext/flatlaf-0.31.jar

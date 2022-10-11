@@ -1,0 +1,11 @@
+# Netbeans builds lots of codeless jars on purpose, so don't warn us about them
+libnb-platform18-java: codeless-jar
+
+# This is a library package in the sense that it doesn't by itself provide an
+# application. But the jar files don't live in /usr/share/java since they are
+# specific to the NetBeans platform and need to live in a "cluster"
+libnb-platform18-java: javalib-but-no-public-jars
+
+# If we use an absolute classpath, the Netbeans IDE warns in its log files that
+# it should be relative. I am not aware of any negative affects yet.
+classpath-contains-relative-path

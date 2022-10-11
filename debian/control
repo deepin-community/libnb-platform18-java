@@ -1,0 +1,130 @@
+Source: libnb-platform18-java
+Section: java
+Priority: optional
+Maintainer: Debian Java Maintainers <pkg-java-maintainers@lists.alioth.debian.org>
+Uploaders:
+ Markus Koschany <apo@debian.org>
+Build-Depends:
+ ant (>= 1.7.0),
+ ant-optional (>= 1.7.0),
+ antlr3 (>= 3.4),
+ debhelper-compat (= 13),
+ default-jdk,
+ javacc,
+ javahelp2,
+ javahelper,
+ junit,
+ junit4 (>= 4.6),
+ libasm-java (>= 7.0),
+ libbindex-java,
+ libcommons-codec-java,
+ libcommons-io-java,
+ libcommons-logging-java,
+ libequinox-osgi-java (>= 3.9.1-4),
+ libfelix-framework-java (>= 4.6.1),
+ libfelix-main-java,
+ libhamcrest-java,
+ libjemmy2-java,
+ libjna-platform-java (>= 4.4.0),
+ libjson-simple-java,
+ libjsr305-java,
+ libosgi-compendium-java (>= 5.0.0),
+ libosgi-core-java (>= 6.0.0),
+ libswing-layout-java (>= 1.0.3),
+ maven-repo-helper,
+ rdfind,
+ symlinks,
+ testng (>=6.8)
+Standards-Version: 4.5.0
+Vcs-Git: https://salsa.debian.org/java-team/libnb-platform-java.git
+Vcs-Browser: https://salsa.debian.org/java-team/libnb-platform-java
+Homepage: https://netbeans.org/
+
+Package: libnb-platform18-java
+Architecture: all
+Depends:
+ antlr3 (>= 3.4),
+ javahelp2,
+ junit4 (>= 4.6),
+ libasm-java (>= 7.0),
+ libcommons-codec-java,
+ libcommons-io-java,
+ libcommons-logging-java,
+ libequinox-osgi-java (>= 3.9.1-4),
+ libfelix-framework-java (>= 4.6.1),
+ libfelix-main-java,
+ libhamcrest-java,
+ libjna-platform-java,
+ libjson-simple-java,
+ libjsr305-java,
+ libnb-org-openide-modules-java (>= ${source:Version}),
+ libnb-org-openide-util-java (>= ${source:Version}),
+ libnb-org-openide-util-lookup-java (>= ${source:Version}),
+ libosgi-compendium-java (>= 5.0.0),
+ libosgi-core-java (>= 6.0.0),
+ libswing-layout-java (>= 1.0.3),
+ testng,
+ ${java:Depends},
+ ${misc:Depends}
+Description: NetBeans Platform for building rich desktop applications in Java
+ The NetBeans Platform is a framework for building rich desktop applications
+ in Java. It provides the code that is required to connect actions to menu
+ items, toolbar items, keyboard shortcuts and more. It is the core of the
+ NetBeans IDE.
+ .
+ This package provides the platform itself.
+
+Package: libnb-platform-devel-java
+Architecture: all
+Depends:
+ ant,
+ javahelp2,
+ libbindex-java,
+ libjemmy2-java,
+ libjnlp-servlet-java,
+ libnb-platform18-java (>= ${source:Version}),
+ ${java:Depends},
+ ${misc:Depends}
+Description: Build harness for NetBeans Platform
+ The NetBeans Platform is a framework for building rich desktop applications
+ in Java. It provides the code that is required to connect actions to menu
+ items, toolbar items, keyboard shortcuts and more. It is the core of the
+ NetBeans IDE.
+ .
+ This package contains the NetBeans Platform Harness containing the build
+ scripts and ant tasks required to build an application on top of NetBeans
+ Platform.
+
+Package: libnb-org-openide-util-java
+Architecture: all
+Depends:
+ libnb-org-openide-util-lookup-java (>= ${source:Version}),
+ ${java:Depends},
+ ${misc:Depends}
+Description: Utility classes from the NetBeans Platform
+ The NetBeans Platform is a set of modules, each providing their own
+ APIs and working together or in a standalone mode. This package provides
+ some utility functions used by the modules that make up the platform.
+
+Package: libnb-org-openide-util-lookup-java
+Architecture: all
+Depends:
+ ${java:Depends},
+ ${misc:Depends}
+Description: Utility lookup classes from the NetBeans Platform
+ The NetBeans Platform is a set of modules, each providing their own
+ APIs and working together or in a standalone mode. This package provides
+ some utility functions for lookups and is used by the modules that make
+ up the platform.
+
+Package: libnb-org-openide-modules-java
+Architecture: all
+Depends:
+ libnb-org-openide-util-java (>= ${source:Version}),
+ libnb-org-openide-util-lookup-java (>= ${source:Version}),
+ ${java:Depends},
+ ${misc:Depends}
+Description: Utility classes for modules from the NetBeans Platform
+ The NetBeans Platform is a set of modules, each providing their own
+ APIs and working together or in a standalone mode. This package provides
+ some utility functions for managing NetBeans modules.

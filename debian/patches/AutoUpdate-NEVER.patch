@@ -1,0 +1,27 @@
+From: Markus Koschany <apo@debian.org>
+Date: Sat, 3 Oct 2020 03:07:26 +0200
+Subject: AutoUpdate-NEVER
+
+Set the defaultCheckInterval to NEVER by default to prevent automatic updates
+which are mostly unnecessary on Debian systems. However it makes sense to
+enable it again for specific plugins. This can be changed by users individually.
+
+Bug-Debian: https://bugs.debian.org/842284
+Forwarded: not-needed
+---
+ .../org/netbeans/modules/autoupdate/ui/actions/AutoupdateSettings.java  | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/platform/autoupdate.ui/src/org/netbeans/modules/autoupdate/ui/actions/AutoupdateSettings.java b/platform/autoupdate.ui/src/org/netbeans/modules/autoupdate/ui/actions/AutoupdateSettings.java
+index 7229274..9608928 100644
+--- a/platform/autoupdate.ui/src/org/netbeans/modules/autoupdate/ui/actions/AutoupdateSettings.java
++++ b/platform/autoupdate.ui/src/org/netbeans/modules/autoupdate/ui/actions/AutoupdateSettings.java
+@@ -124,7 +124,7 @@ public class AutoupdateSettings {
+             defaultCheckInterval = parse (Utilities.getCustomCheckIntervalInMinutes ());
+         }
+         if (defaultCheckInterval == null) {
+-            defaultCheckInterval = EVERY_WEEK;
++            defaultCheckInterval = NEVER;
+         }
+         err.log (Level.FINEST, "getPeriod () returns " + getPreferences ().getInt (PROP_PERIOD, defaultCheckInterval));
+         return getPreferences ().getInt (PROP_PERIOD, defaultCheckInterval);

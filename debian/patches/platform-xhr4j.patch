@@ -1,0 +1,21 @@
+From: Markus Koschany <apo@debian.org>
+Date: Sat, 3 Oct 2020 03:05:46 +0200
+Subject: platform-xhr4j
+
+Disable xhr4j module.
+---
+ nbbuild/cluster.properties | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/nbbuild/cluster.properties b/nbbuild/cluster.properties
+index d106368..0870880 100644
+--- a/nbbuild/cluster.properties
++++ b/nbbuild/cluster.properties
+@@ -244,7 +244,6 @@ nb.cluster.platform=\
+         o.apache.commons.io,\
+         o.apache.commons.logging,\
+         o.n.core,\
+-        o.n.html.xhr4j,\
+         o.n.swing.laf.dark,\
+         o.n.swing.outline,\
+         o.n.swing.plaf,\

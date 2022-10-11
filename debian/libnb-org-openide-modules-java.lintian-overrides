@@ -1,0 +1,3 @@
+# Netbeans has it's own way to set the classpath, and it breaks things if we
+# set it separately.
+libnb-org-openide-modules-java: missing-classpath

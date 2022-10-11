@@ -1,0 +1,48 @@
+From: Markus Koschany <apo@debian.org>
+Date: Sat, 3 Oct 2020 00:17:42 +0200
+Subject: netbeans-platform-disable-net.java-modules
+
+net.java has not been packaged yet.
+---
+ nbbuild/build.properties   | 1 -
+ nbbuild/cluster.properties | 8 --------
+ 2 files changed, 9 deletions(-)
+
+diff --git a/nbbuild/build.properties b/nbbuild/build.properties
+index ee72ef4..979c9ac 100644
+--- a/nbbuild/build.properties
++++ b/nbbuild/build.properties
+@@ -74,7 +74,6 @@ javadoc.packages=\
+ # List of modules that provide stable javadoc
+ config.javadoc.stable=\
+     api.annotations.common,\
+-    api.htmlui,\
+     api.intent,\
+     api.io,\
+     api.knockout,\
+diff --git a/nbbuild/cluster.properties b/nbbuild/cluster.properties
+index 2055c01..345a52a 100644
+--- a/nbbuild/cluster.properties
++++ b/nbbuild/cluster.properties
+@@ -197,7 +197,6 @@ nb.cluster.platform.dir=platform
+ nb.cluster.platform.depends=nb.cluster.bootstrap
+ nb.cluster.platform=\
+         api.annotations.common,\
+-        api.htmlui,\
+         api.intent,\
+         api.io,\
+         api.progress,\
+@@ -250,13 +249,6 @@ nb.cluster.platform=\
+         masterfs.nio2,\
+         masterfs.ui,\
+         masterfs.windows,\
+-        net.java.html,\
+-        net.java.html.boot,\
+-        net.java.html.boot.fx,\
+-        net.java.html.boot.script,\
+-        net.java.html.geo,\
+-        net.java.html.json,\
+-        net.java.html.sound,\
+         netbinox,\
+         o.apache.commons.codec,\
+         o.apache.commons.io,\

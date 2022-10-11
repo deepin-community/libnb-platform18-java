@@ -1,0 +1,8 @@
+# Netbeans builds lots of codeless jars on purpose, so don't warn us about them
+libnb-platform-devel-java: codeless-jar
+
+# This is a library package in the sense that it doesn't by itself provide an
+# application. But the jar files don't live in /usr/share/java since they are
+# specific to the NetBeans platform and need to live in a "cluster"
+libnb-platform-devel-java: javalib-but-no-public-jars
+

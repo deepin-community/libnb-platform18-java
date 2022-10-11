@@ -1,0 +1,29 @@
+From: Markus Koschany <apo@debian.org>
+Date: Sat, 3 Oct 2020 20:27:51 +0200
+Subject: netbeans apisupport.harness
+
+Prevent the test download because network connectivity is not available.
+
+Forwarded: not-needed
+---
+ harness/apisupport.harness/build.xml | 7 -------
+ 1 file changed, 7 deletions(-)
+
+diff --git a/harness/apisupport.harness/build.xml b/harness/apisupport.harness/build.xml
+index abf7eb4..105bcb4 100644
+--- a/harness/apisupport.harness/build.xml
++++ b/harness/apisupport.harness/build.xml
+@@ -39,13 +39,6 @@
+                 <pathelement location="${cluster}/tasks.jar"></pathelement>
+             </classpath>
+         </taskdef>
+-        <echo file="build/binaries-list">3F5199523FB95304B44563F5D56D9F5A07270669 org.ow2.asm:asm:8.0.1</echo>
+-        <TestDownload>
+-            <manifest dir="build">
+-                <include name="binaries-list"/>
+-            </manifest>
+-        </TestDownload>
+-        <delete file="build/asm-8.0.1.jar"/>
+     </target>
+ 
+     <target name="compile-jnlp-launcher" depends="init,compile">
